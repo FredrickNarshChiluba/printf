@@ -1,4 +1,4 @@
-# <PRINTF PROJECT>
+# PRINTF PROJECT
 
 ## Description
 
