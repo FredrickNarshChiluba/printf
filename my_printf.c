@@ -1,39 +1,55 @@
 #include "main.h"
 
-int count = 0;
+/**
+ * _printf - custom print function
+ * @format: character string
+ * Return: int
+ */
+int _printf(const char *format, ...)
+{
+	va_list args;
+	int count;
 
-int _printf(const char* format, ...) {
-    va_list args;
-    va_start(args, format);
+	va_start(args, format);
+	count = 0;
 
-    while (*format != '\0') {
-        if (*format == '%') {
-            format++;
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format++;
 
-            if (*format == 'c') {
-                int c = va_arg(args, int);
-                _putchar(c);
-                count++;
-            } else if (*format == 's') {
-                char* str = va_arg(args, char*);
-                while (*str != '\0') {
-                    _putchar(*str);
-                    str++;
-                    count++;
-                }
-            } else if (*format == '%') {
-                _putchar('%');
-                count++;
-            }
-        } else {
-            _putchar(*format);
-            count++;
-        }
+			if (*format == 'c')
+			{
+				int c = va_arg(args, int);
 
-        format++;
-    }
+				_putchar(c);
+				count++;
+			} else if (*format == 's')
+			{
+				char *str = va_arg(args, char*);
 
-    va_end(args);
+				while (*str != '\0')
+				{
+					_putchar(*str);
+					str++;
+					count++;
+				}
+			} else if (*format == '%')
+			{
+				_putchar('%');
+				count++;
+			}
+		} else
+		{
+			_putchar(*format);
+			count++;
+		}
 
-    return (count);
+		format++;
+	}
+
+	va_end(args);
+
+	return (count);
 }
