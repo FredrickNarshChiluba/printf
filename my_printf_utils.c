@@ -1,17 +1,20 @@
 #include "main.h"
 
 /**
- * check_if_printatble - Evaluates if a char is printable
- * @c: Char to be evaluated.
+ * convert_unsgned_size - Casts a number to the specified size
+ * @num: Number to be casted
+ * @size: Number indicating the type to be casted
  *
- * Return: 1 if c is printable, 0 otherwise
+ * Return: Casted value of num
  */
-int check_if_printatble(char c)
+long int convert_unsgned_size(unsigned long int num, int size)
 {
-	if (c >= 32 && c < 127)
-		return (1);
+	if (size == SIZE_L)
+		return (num);
+	else if (size == SIZE_S)
+		return ((unsigned short)num);
 
-	return (0);
+	return ((unsigned int)num);
 }
 
 /**
@@ -69,18 +72,14 @@ long int convert_number_size(long int num, int size)
 }
 
 /**
- * convert_unsgned_size - Casts a number to the specified size
- * @num: Number to be casted
- * @size: Number indicating the type to be casted
- *
- * Return: Casted value of num
+ * check_if_printatble - Evaluates if a char is printable
+ * @c: Char to be evaluated.
+ * Return: 1 if c is printable, 0 otherwise
  */
-long int convert_unsgned_size(unsigned long int num, int size)
+int check_if_printatble(char c)
 {
-	if (size == SIZE_L)
-		return (num);
-	else if (size == SIZE_S)
-		return ((unsigned short)num);
+	if (c >= 32 && c < 127)
+		return (1);
 
-	return ((unsigned int)num);
+	return (0);
 }

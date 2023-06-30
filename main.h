@@ -4,20 +4,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define NOT_USED(q) (void)(q)
-#define BUFFR_SIZE 1024
-
-/* FLAGS */
-#define FLAG_MINUS 1
-#define FLAG_PLUS 2
-#define FLAG_ZERO 4
-#define FLAG_HASH 8
-#define FLAG_SPACE 16
-
-/* SIZES */
-#define SIZE_L 2
-#define SIZE_S 1
-
 /**
  * _putchar - write character c to the stdout
  * @c: the character
@@ -37,6 +23,16 @@ struct frmat
 	int (*fn)(va_list, char[], int, int, int, int);
 };
 
+/* FLAGS */
+#define FLAG_MINUS 1
+#define FLAG_PLUS 2
+#define FLAG_ZERO 4
+#define FLAG_HASH 8
+#define FLAG_SPACE 16
+
+/*buffer print*/
+void print_buffer(char buffer[], int *buffr_ind);
+
 /**
  * typedef struct frmat frmatn - Struct frmatn
  *
@@ -46,7 +42,7 @@ struct frmat
 typedef struct frmat frmatn;
 
 /**
- * _printf - custom prints function
+ * _printf - my custom prints function
  *
  * @format: format.
  * Return - int
@@ -76,13 +72,16 @@ int hexa_dec_print(va_list types, char buffer[],
 		int flags, int width, int precision, int size);
 int hexa_upper_print(va_list types, char buffer[],
 		int flags, int width, int precision, int size);
-
 int hexa_print(va_list types, char map_to[],
 		char buffer[], int flags, char flag_ch, int width, int precision, int size);
 
 /* Function to print non printable characters */
 int non_printable_char_print(va_list types, char buffer[],
 		int flags, int width, int precision, int size);
+
+/* SIZES */
+#define SIZE_L 2
+#define SIZE_S 1
 
 /* Funcion to print memory address */
 int print_ptr(va_list types, char buffer[],
@@ -119,4 +118,8 @@ int is_digit(char);
 long int convert_number_size(long int num, int size);
 long int convert_unsgned_size(unsigned long int num, int size);
 
+#define NOT_USED(q) (void)(q)
+#define BUFFR_SIZE 1024
+
 #endif
+
